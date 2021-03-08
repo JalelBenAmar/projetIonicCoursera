@@ -1,4 +1,4 @@
-import { baseURL } from './../../shared/baseurl';
+import { BaseURL } from './../../shared/baseurl';
 import { ProcessHttpmsgService } from './process-httpmsg.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -13,7 +13,7 @@ export class LeaderService {
     private processHttpmsgService: ProcessHttpmsgService) { }
 
   getLeaders(): Observable<Leader[]> {
-    return this.http.get<Leader[]>(baseURL + 'leaders')
+    return this.http.get<Leader[]>(BaseURL + 'leaders')
       .pipe(
         retry(1),
         catchError(this.processHttpmsgService.errorHandl)
@@ -21,7 +21,7 @@ export class LeaderService {
   }
 
   getLeader(id: number): Observable<Leader> {
-    return this.http.get<Leader>(baseURL + 'leaders/'+id)
+    return this.http.get<Leader>(BaseURL + 'leaders/'+id)
     .pipe(
       retry(1),
       catchError(this.processHttpmsgService.errorHandl)
@@ -29,7 +29,7 @@ export class LeaderService {
   }
 
   getFeaturedLeader(): Observable<Leader> {
-    return this.http.get<Leader>(baseURL + 'leaders?featured=true')
+    return this.http.get<Leader>(BaseURL + 'leaders?featured=true')
     .pipe(
       retry(1),
       catchError(this.processHttpmsgService.errorHandl)

@@ -1,5 +1,5 @@
 import { Promotion } from './../../shared/promotion';
-import { baseURL } from './../../shared/baseurl';
+import { BaseURL } from './../../shared/baseurl';
 import { ProcessHttpmsgService } from './process-httpmsg.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -14,7 +14,7 @@ export class PromotionService {
     private processHttpmsgService: ProcessHttpmsgService) { }
 
   getPromotions(): Observable<Promotion[]> {
-    return this.http.get<Promotion[]>(baseURL + 'promotions')
+    return this.http.get<Promotion[]>(BaseURL + 'promotions')
       .pipe(
         retry(1),
         catchError(this.processHttpmsgService.errorHandl)
@@ -22,7 +22,7 @@ export class PromotionService {
   }
 
   getPromotion(id: number): Observable<Promotion> {
-    return this.http.get<Promotion>(baseURL + 'promotions/'+id)
+    return this.http.get<Promotion>(BaseURL + 'promotions/'+id)
     .pipe(
       retry(1),
       catchError(this.processHttpmsgService.errorHandl)
@@ -30,7 +30,7 @@ export class PromotionService {
   }
 
   getFeaturedPromotion(): Observable<Promotion> {
-    return this.http.get<Promotion>(baseURL + 'promotions?featured=true')
+    return this.http.get<Promotion>(BaseURL + 'promotions?featured=true')
     .pipe(
       retry(1),
       catchError(this.processHttpmsgService.errorHandl)

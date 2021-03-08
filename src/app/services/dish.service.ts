@@ -1,4 +1,4 @@
-import { baseURL } from './../../shared/baseurl';
+import { BaseURL } from './../../shared/baseurl';
 import { ProcessHttpmsgService } from './process-httpmsg.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -16,7 +16,7 @@ export class DishService {
     private processHttpmsgService: ProcessHttpmsgService) { }
 
   getDishes(): Observable<Dish[]> {
-    return this.http.get<Dish[]>(baseURL + 'dishes')
+    return this.http.get<Dish[]>(BaseURL + 'dishes')
       .pipe(
         retry(1),
         catchError(this.processHttpmsgService.errorHandl)
@@ -24,7 +24,7 @@ export class DishService {
   }
 
   getDish(id: number): Observable<Dish> {
-    return this.http.get<Dish>(baseURL + 'dishes/'+id)
+    return this.http.get<Dish>(BaseURL + 'dishes/'+id)
     .pipe(
       retry(1),
       catchError(this.processHttpmsgService.errorHandl)
@@ -32,7 +32,7 @@ export class DishService {
   }
 
   getFeaturedDish(): Observable<Dish> {
-    return this.http.get<Dish>(baseURL + 'dishes?featured=true')
+    return this.http.get<Dish>(BaseURL + 'dishes?featured=true')
     .pipe(
       retry(1),
       catchError(this.processHttpmsgService.errorHandl)
