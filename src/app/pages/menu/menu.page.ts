@@ -5,6 +5,7 @@ import { DishService } from 'src/app/services/dish.service';
 import { BaseURL } from 'src/shared/baseurl';
 import { Dish } from 'src/shared/dish';
 import { NavigationExtras } from '@angular/router';
+import { FavoriteService } from './../../services/favorite.service';
 
 @Component({
   selector: 'app-menu',
@@ -20,6 +21,7 @@ export class MenuPage implements OnInit {
     private navCtrl: NavController,
     private navParam: NavParams,
     private dishService: DishService,
+    private favoriteService: FavoriteService
   ) { 
     this.baseURL = BaseURL;
   }
@@ -40,6 +42,10 @@ export class MenuPage implements OnInit {
 
   dishSelected(event, dish){
     this.navCtrl.navigateForward(['/dishdetail'],{ state: { dish: dish } });
+  }
+
+  addToFavorites(dish: Dish){
+    this.favoriteService.addFavorite(dish);
   }
 
 }

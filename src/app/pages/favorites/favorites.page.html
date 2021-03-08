@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>My Favorites</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <div *ngIf="favorites">
+    <ion-list>
+      <ion-item>
+        <ion-item-sliding *ngFor="let favorite of favorites">
+          <ion-thumbnail>
+            <img src="{{ baseURL + favorite.image }}">
+          </ion-thumbnail>
+          <h3>{{ favorite.name}}</h3>
+          <p> {{ favorite.description }} </p>
+          <ion-item-options side="end">
+            <ion-item-option (click)="deleteFavorite(favorite.id)" color="danger" expandable>
+              Delete
+              <ion-icon name="trash"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-item>
+    </ion-list>
+  </div>
+ -->
+  <ng-container *ngIf="favorites">
+
+    <ion-item-sliding *ngFor="let favorite of favorites" #item>
+      <ion-item>
+        <ion-thumbnail>
+          <img class="image" src="{{ baseURL + favorite.image }}">
+        </ion-thumbnail>
+        <ion-row>
+        <h3>{{ favorite.name}}</h3>
+        </ion-row>
+        <ion-row>
+          <p class="paragraph">{{ favorite.description }}</p>
+        </ion-row>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option (click)="deleteFavorite(item,favorite)" color="danger" expandable>
+          Delete
+          <ion-icon name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+  </ng-container>
+
+  <div [hidden]="favorites || errMess">
+    <ion-spinner></ion-spinner>
+    <h4>Loading . . . Please Wait</h4>
+  </div>
+  <div *ngIf="errMess">
+    <h2>Error</h2>
+    <h4>{{ errMess }}</h4>
+  </div>
+</ion-content>

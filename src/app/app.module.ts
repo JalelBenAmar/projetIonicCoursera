@@ -1,3 +1,4 @@
+import { FavoriteService } from './services/favorite.service';
 import { PromotionService } from './services/promotion.service';
 import { ProcessHttpmsgService } from './services/process-httpmsg.service';
 import { LeaderService } from './services/leader.service';
@@ -43,13 +44,14 @@ import { DishdetailPage } from './pages/dishdetail/dishdetail.page';
 		AppRoutingModule,
 		HttpClientModule,
 		FormsModule,
-		ReactiveFormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     DishService,
     LeaderService,
     ProcessHttpmsgService,
     PromotionService,
+    FavoriteService,
     NavParams,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ],

@@ -18,8 +18,9 @@ export class AppComponent {
   public appPages = [
     { title: 'Home', icon:'home', url: '/home' },
     { title: 'About', icon:'information-circle', url: '/about' },
-    { title: 'Menu', icon:'apps', url: 'menu' },
-    { title: 'Contact', icon:'apps', url: 'contact' },
+    { title: 'Menu', icon:'apps', url: '/menu' },
+    { title: 'Contact Us', icon:'apps', url: '/contact' },
+    { title: 'My Favorites', icon:'heart', url: '/favorites' },
   ];
   constructor(private navCntrll:NavController) {}
 

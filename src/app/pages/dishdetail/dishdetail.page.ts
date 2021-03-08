@@ -33,7 +33,7 @@ export class DishdetailPage implements OnInit {
     this.baseURL = BaseURL;
     if (this.router.getCurrentNavigation().extras.state) {
       this.dish = this.router.getCurrentNavigation().extras.state.dish;
-      this.favorite = this.favoriteService.isFavorite(this.dish.id);
+      this.favorite = this.favoriteService.isFavorite(this.dish);
     }
     this.numcomments = this.dish.comments.length;
 
@@ -46,10 +46,10 @@ export class DishdetailPage implements OnInit {
   }
 
   addToFavorites(){
-    this.favorite = this.favoriteService.addFavorite(this.dish.id);
+    this.favorite = this.favoriteService.addFavorite(this.dish);
   }
   removeFromFavorites(){
-    this.favorite = this.favoriteService.removeFavorite(this.dish.id);
+    this.favorite = this.favoriteService.removeFavorite(this.dish);
   }
 
 }
