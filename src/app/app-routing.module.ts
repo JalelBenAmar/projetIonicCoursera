@@ -29,7 +29,16 @@ const routes: Routes = [
   {
     path: 'favorites',
     loadChildren: () => import('./pages/favorites/favorites.module').then( m => m.FavoritesPageModule)
-  }
+  },
+  {
+    path: 'reservation',
+    loadChildren: () => import('./pages/reservation/reservation.module').then( m => m.ReservationPageModule)
+  },
+  {
+    path: 'comment',
+    loadChildren: () => import('./pages/comment/comment.module').then( m => m.CommentPageModule)
+  },
+  
 ];
 
 @NgModule({

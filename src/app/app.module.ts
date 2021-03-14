@@ -20,6 +20,8 @@ import { AboutPage } from './pages/about/about.page';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DishdetailPage } from './pages/dishdetail/dishdetail.page';
+import { ReservationPage } from './pages/reservation/reservation.page';
+import { CommentPage } from './pages/comment/comment.page';
   
 
 @NgModule({
@@ -30,6 +32,8 @@ import { DishdetailPage } from './pages/dishdetail/dishdetail.page';
     ContactPage,
     MenuPage,
     DishdetailPage,
+    ReservationPage,
+    CommentPage,
   ],
   entryComponents: [
     HomePage,
@@ -37,6 +41,8 @@ import { DishdetailPage } from './pages/dishdetail/dishdetail.page';
     ContactPage,
     MenuPage,
     DishdetailPage,
+    ReservationPage,
+    CommentPage,
   ],
   imports: [
     BrowserModule,
