@@ -9,32 +9,56 @@
 </ion-header>
 
 <ion-content>
+<ion-grid>
+  <ion-row align-items-center>
+    <ion-col col-12 col-lg-6>
+      <ion-card *ngIf="dish">
+        <img class="image" src="{{baseURL+ dish.image}}" />
+        <ion-card-content>
+          <ion-card-title>
+            {{ dish.name | uppercase }}
+          </ion-card-title>
+          <p>
+            {{ dish.description }}
+          </p>
+        </ion-card-content>
+        <ion-row>
+          <ion-col>
+            <ion-button icon-left clear small>
+              <ion-icon name="star"></ion-icon>
+              <div>{{ avgstars }} stars</div>
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button icon-left clear small>
+              <ion-icon name="text"></ion-icon>
+              <div>{{ numcomments }} Comments</div>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 
-  <ion-card *ngIf="dish">
-    <img class="image" src="{{baseURL+ dish.image}}" />
-    <ion-card-content>
-      <ion-card-title>
-        {{ dish.name | uppercase }}
-      </ion-card-title>
-      <p>
-        {{ dish.description }}
-      </p>
-    </ion-card-content>
-    <ion-row>
-      <ion-col>
-        <ion-button icon-left clear small>
-          <ion-icon name="star"></ion-icon>
-          <div>{{ avgstars }} stars</div>
-        </ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button icon-left clear small>
-          <ion-icon name="text"></ion-icon>
-          <div>{{ numcomments }} Comments</div>
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-card>
+  <ion-row>
+    <ion-col col-12 col-lg-6>
+      <ion-list *ngIf="dish">
+        <ion-list-header>
+          Comments
+        </ion-list-header>
+        <ion-item *ngFor="let comment of dish.comments" text-wrap>
+          <h4> {{comment.comment}} </h4>
+          <p> {{comment.rating}} Stars</p>
+          <p>
+            <span> -- {{comment.author}} {{comment.date | date }} </span>
+          </p>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+  
+  
 
   <div [hidden]="dish || dishErrMess">
     <ion-spinner></ion-spinner>
@@ -45,18 +69,7 @@
     <h4>{{ dishErrMess }}</h4>
   </div>
 
-  <ion-list *ngIf="dish">
-    <ion-list-header>
-      Comments
-    </ion-list-header>
-    <ion-item *ngFor="let comment of dish.comments" text-wrap>
-      <h4> {{comment.comment}} </h4>
-      <p> {{comment.rating}} Stars</p>
-      <p>
-        <span> -- {{comment.author}} {{comment.date | date }} </span>
-      </p>
-    </ion-item>
-  </ion-list>
+ 
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" [hidden]="favorite">
     <ion-fab-button (click)="addToFavorites()">

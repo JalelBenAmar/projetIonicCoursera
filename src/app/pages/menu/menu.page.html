@@ -9,13 +9,11 @@
 
 <ion-content class="card-background-image">
   <div *ngIf="dishes">
-    <ion-card *ngFor="let dish of dishes" 
-    (click)="dishSelected($event,dish)">
-      <img class="image" src="{{baseURL+ dish.image}}"/>
+    <ion-card *ngFor="let dish of dishes" (click)="dishSelected($event,dish)">
+      <img class="image" src="{{baseURL+ dish.image}}" />
       <div (pan)="addToFavorites(dish)" class="card-title">{{ dish.name | uppercase }}</div>
       <div class="card-subtitle">{{ dish.description }}</div>
     </ion-card>
-  
   </div>
 
   <div [hidden]="dishes || dishErrMess">

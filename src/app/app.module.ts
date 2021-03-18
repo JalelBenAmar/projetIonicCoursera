@@ -22,7 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DishdetailPage } from './pages/dishdetail/dishdetail.page';
 import { ReservationPage } from './pages/reservation/reservation.page';
 import { CommentPage } from './pages/comment/comment.page';
-  
+import { LoginPage } from './pages/login/login.page';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { CommentPage } from './pages/comment/comment.page';
     DishdetailPage,
     ReservationPage,
     CommentPage,
+    LoginPage,
   ],
   entryComponents: [
     HomePage,
@@ -43,6 +45,7 @@ import { CommentPage } from './pages/comment/comment.page';
     DishdetailPage,
     ReservationPage,
     CommentPage,
+    LoginPage,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ import { CommentPage } from './pages/comment/comment.page';
 		HttpClientModule,
 		FormsModule,
     ReactiveFormsModule,
+    IonicStorageModule.forRoot(),
   ],
   providers: [
     DishService,

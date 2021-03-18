@@ -124,3 +124,20 @@ ion-item{
 ion-toolbar{
   background-color: #9575CD;
 }
+
+$lt-gray: #ddd;
+$background-dark: #512DA8;
+$background-light: #9575CD;
+$background-pale: #D1C4E9;
+
+.background-pale{
+  background-color: $background-pale;
+}
+
+ion-list-header{
+  background-color: #9575CD;
+}
+
+.list{
+  padding-top: 0%;
+}

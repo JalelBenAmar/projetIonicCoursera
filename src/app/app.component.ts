@@ -6,6 +6,7 @@ import { AboutPage } from './pages/about/about.page';
 
 import { Component, ViewChild } from '@angular/core';
 import { ReservationPage } from './pages/reservation/reservation.page';
+import { LoginPage } from './pages/login/login.page';
 
 
 
@@ -33,6 +34,13 @@ export class AppComponent {
   async openReserve() {
     const modal = await this.modalController.create({
       component: ReservationPage,
+    });
+    return await modal.present();
+  }
+
+  async openLogin(){
+    const modal = await this.modalController.create({
+      component: LoginPage,
     });
     return await modal.present();
   }

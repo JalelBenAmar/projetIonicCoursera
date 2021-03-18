@@ -1,8 +1,10 @@
+import { Storage } from '@ionic/storage';
 import { Component, OnInit } from '@angular/core';
 import { AlertController, IonItemSliding, LoadingController, ToastController } from '@ionic/angular';
 import { FavoriteService } from 'src/app/services/favorite.service';
 import { BaseURL } from 'src/shared/baseurl';
 import { Dish } from 'src/shared/dish';
+
 
 @Component({
   selector: 'app-favorites',
@@ -17,22 +19,26 @@ export class FavoritesPage {
   constructor(private favoriteService: FavoriteService,
     private toastController: ToastController,
     private loadingController: LoadingController,
-    private alertController: AlertController) {
+    private alertController: AlertController,
+    private storage: Storage,
+    ) {
     this.baseURL = BaseURL;
   }
 
   ionViewDidEnter() {
-    this.favorites = this.favoriteService.getFavorites();
+    this.storage.get('favorites').then(favorites => {
+      this.favorites = JSON.parse(favorites);
+    });
   }
 
-  deleteFavoriteConfirmed(item: IonItemSliding, favoris: Dish) {
-    this.presentLoading();
-    this.favorites = this.favorites.filter(el => el.id != favoris.id);
-    this.favoriteService.removeFavorite(favoris);
-    this.loadingController.dismiss();
-    this.presentToast("Dish " + favoris.id + ' deleted successfully');
-    item.close();
-  }
+  // deleteFavoriteConfirmed(item: IonItemSliding, favoris: Dish) {
+  //   this.presentLoading();
+  //   this.favorites = this.favorites.filter(el => el.id != favoris.id);
+  //   this.favoriteService.removeFavorite(favoris);
+  //   this.loadingController.dismiss();
+  //   this.presentToast("Dish " + favoris.id + ' deleted successfully');
+  //   item.close();
+  // }
 
   async presentToast(message: string) {
     const toast = await this.toastController.create({
@@ -70,7 +76,7 @@ export class FavoritesPage {
           handler: () => {
             this.presentLoading();
             this.favorites = this.favorites.filter(el => el.id != favoris.id);
-            this.favoriteService.removeFavorite(favoris);
+            this.storage.set('favorites',JSON.stringify(this.favorites));
             this.loadingController.dismiss();
             this.presentToast("Dish " + favoris.id + ' deleted successfully');
             item.close();
