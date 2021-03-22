@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Register</ion-title>
+    <ion-icon class="iconClose" (click)="dismiss()" slot="end" name="close"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card>
+  <ion-card-header>Your Picture</ion-card-header>
+  <img src="{{image}}"/>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="takePicture()">Take Picture</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="selectPicture()">Select Picture</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <ion-item>
+    <ion-label position="floating">First Name</ion-label>
+    <ion-input type="text" formControlName="firstName" [(ngModel)]="user.firstName" [ngModelOptions]="{standalone: true}"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Last Name</ion-label>
+    <ion-input type="text" formControlName="lastName" [(ngModel)]="user.lastName" [ngModelOptions]="{standalone: true}"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">User Name</ion-label>
+    <ion-input type="text" formControlName="userName" [(ngModel)]="user.userName" [ngModelOptions]="{standalone: true}"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Password</ion-label>
+    <ion-input type="password" formControlName="password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Telephone</ion-label>
+    <ion-input type="tel" formControlName="telnum" [(ngModel)]="user.telnum" [ngModelOptions]="{standalone: true}" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">E-Mail</ion-label>
+    <ion-input type="email" formControlName="email" email [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}"></ion-input>
+  </ion-item>
+
+  <ion-button type="submit">Register</ion-button>
+</form>
+</ion-content>

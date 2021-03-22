@@ -1,3 +1,4 @@
+import { RegisterPage } from './../register/register.page';
 import { Dish } from './../../../shared/dish';
 import { ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
@@ -53,6 +54,14 @@ export class LoginPage implements OnInit {
       this.storage.remove('user');
     }
     this.dismiss();
+  }
+
+  async openRegister(){
+    const modal = await this.modalController.create({
+      component: RegisterPage,
+    });
+    this.dismiss();
+    return await modal.present();
   }
 
 }
